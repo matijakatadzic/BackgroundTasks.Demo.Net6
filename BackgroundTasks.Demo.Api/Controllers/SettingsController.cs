@@ -15,9 +15,23 @@ namespace BackgroundTasks.Demo.Api.Controllers
             _logger = logger;
             _settingService = settingService;
         }
+        /// <summary>
+        /// GetIsEnabled
+        /// </summary>
+        /// <returns>IsEnabled</returns>
+        [HttpGet(Name = "GetIsEnabled")]
+        public IActionResult GetIsEnabled()
+        {
+            return Ok(_settingService.IsEnabled);
+        }
 
-        [HttpGet(Name = "EnableBackgroundProcess")]
-        public IActionResult Get(bool isEnabled)
+        /// <summary>
+        /// UpdateIsEnabled
+        /// </summary>
+        /// <param name="isEnabled"></param>
+        /// <returns></returns>
+        [HttpPost(Name = "UpdateIsEnabled")]
+        public IActionResult UpdateIsEnabled(bool isEnabled)
         {
             _settingService.IsEnabled = isEnabled;
             return Ok();
